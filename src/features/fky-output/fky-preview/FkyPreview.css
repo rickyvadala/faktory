@@ -1,0 +1,13 @@
+.fky-preview {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.fky-preview_text {
+    line-height: 1.5;
+    border: none;
+    background: transparent;
+    resize: none;
+    width: 100%;
+    color: white;
+}

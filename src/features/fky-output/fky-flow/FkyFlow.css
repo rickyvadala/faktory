@@ -1,0 +1,35 @@
+.fky-flow {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.fky-flow_list {
+    margin: 0;
+}
+
+.fky-flow_item {
+    position: relative;
+    font-size: 16px;
+    line-height: 48px;
+    list-style: none;
+}
+
+.fky-flow_item:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #4F4F4F;
+    border-radius: 50%;
+    left: -20px;
+    top: calc(50% - 5px);
+}
+
+.fky-flow_item:not(:last-child):after {
+    content: '';
+    position: absolute;
+    border-left: #4F4F4F dashed 1px;
+    height: 16px;
+    left: -16px;
+    bottom: -8px;
+}

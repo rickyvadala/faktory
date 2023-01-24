@@ -1,0 +1,14 @@
+.fky-adjust {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.fky-adjust_text {
+    line-height: 1.5;
+    background: transparent;
+    resize: none;
+    width: 100%;
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+}

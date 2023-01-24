@@ -1,8 +1,12 @@
 .fky-main-layout {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     background: #1E1E1E;
 }
 
 .fky-main-layout_outlet {
+    display: flex;
     padding: 16px;
+    flex: 1 1 100%;
 }

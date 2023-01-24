@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
 }
 
 .fky-output_buttons {
@@ -34,4 +34,9 @@
 
 .fky-output_buttons button.active {
     background: rgb(217 217 217 / 15%);
+}
+
+.fky-output_content {
+    display: flex;
+    flex: 1 1 100%;
 }

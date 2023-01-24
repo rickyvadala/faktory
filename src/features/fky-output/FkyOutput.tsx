@@ -2,8 +2,9 @@ import './FkyOutput.css'
 import {useState} from "react";
 import {FkyFlow} from "./fky-flow/FkyFlow";
 import {FkyPreview} from "./fky-preview/FkyPreview";
+import {FkyAdjust} from "./fky-adjust/FkyAdjust";
 
-type FkyOutputOptionType = 'flow' | 'preview';
+type FkyOutputOptionType = 'flow' | 'preview' | 'adjust';
 
 export const FkyOutput = () => {
     const [option, setOption] = useState<FkyOutputOptionType>('flow')
@@ -11,6 +12,10 @@ export const FkyOutput = () => {
         <div className={'fky-output'}>
             <div className={'fky-output_selector'}>
                 <div className={'fky-output_buttons'}>
+                    <button className={`${option === 'adjust' && 'active'}`}
+                            onClick={() => setOption("adjust")}>
+                        Adjust
+                    </button>
                     <button className={`${option === 'flow' && 'active'}`}
                             onClick={() => setOption("flow")}>
                         Flow
@@ -22,10 +27,9 @@ export const FkyOutput = () => {
                 </div>
             </div>
             <div className={'fky-output_content'}>
-                {option === 'flow'
-                    ? <FkyFlow/>
-                    : <FkyPreview/>
-                }
+                {option === 'adjust' && <FkyAdjust/>}
+                {option === 'flow' && <FkyFlow/>}
+                {option === 'preview' && <FkyPreview/>}
             </div>
         </div>
     )
