@@ -1,0 +1,46 @@
+.fky-actions {
+    margin-top: 32px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: #141515;
+    border-radius: 25px;
+}
+
+.fky-actions_left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fky-actions_left button {
+    color: #0F1010;
+    width: 32px;
+    height: 32px;
+    background: #00E0FF;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition-property: font-size;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in;
+    transition-delay: 0.1s;
+}
+
+.fky-actions_left button:hover {
+    font-size: 20px;
+}
+
+.fky-actions_right button {
+    padding: 0 8px;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.fky-actions_right button:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,11 @@
+.fky-popover {
+    width: 180px;
+    height: 233px;
+    background: #262729;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    right: -180px;
+    z-index: 1;
+}
+

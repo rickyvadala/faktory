@@ -1,0 +1,18 @@
+.fky-console {
+    display: flex;
+    flex-direction: column;
+}
+
+.fky-console_input {
+    color: white;
+    background: transparent;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    resize: none;
+}
+
+.fly-console_output-container {
+    position: relative;
+    width: fit-content;
+}

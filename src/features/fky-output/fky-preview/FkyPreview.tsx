@@ -17,7 +17,7 @@ export const FkyPreview = () => {
   return (
       <div className={'fky-preview'}>
           <textarea className={'fky-preview_text'}
-                    disabled
+                    readOnly
                     value={preview}
                     onChange={(e) => setPreview(e.target.value)}/>
       </div>
