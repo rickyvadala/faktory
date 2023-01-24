@@ -1,0 +1,12 @@
+.fky-name {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: white;
+}
+
+.fky-name img {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 2px;
+}

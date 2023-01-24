@@ -1,0 +1,13 @@
+.fky-home {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.fky-home .fky-playground {
+    flex-basis: 50%;
+}
+
+.fky-home .fky-output {
+    flex-basis: 50%;
+}

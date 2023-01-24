@@ -1,0 +1,8 @@
+.fky-main-layout {
+    min-height: 100vh;
+    background: #1E1E1E;
+}
+
+.fky-main-layout_outlet {
+    padding: 16px;
+}
