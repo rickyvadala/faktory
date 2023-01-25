@@ -12,15 +12,15 @@ export const FkyOutput = () => {
         <div className={'fky-output'}>
             <div className={'fky-output_selector'}>
                 <div className={'fky-output_buttons'}>
-                    <button className={`${option === 'adjust' && 'active'}`}
+                    <button className={`${option === 'adjust' ? 'active' : ''}`}
                             onClick={() => setOption("adjust")}>
                         Adjust
                     </button>
-                    <button className={`${option === 'flow' && 'active'}`}
+                    <button className={`${option === 'flow' ? 'active' : ''}`}
                             onClick={() => setOption("flow")}>
                         Flow
                     </button>
-                    <button className={`${option === 'preview' && 'active'}`}
+                    <button className={`${option === 'preview' ? 'active' : ''}`}
                             onClick={() => setOption("preview")}>
                         Preview
                     </button>

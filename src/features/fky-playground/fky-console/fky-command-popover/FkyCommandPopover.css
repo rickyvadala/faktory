@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     height: 24px;
-    margin: 8px 8px 4px;
+    margin: 8px 16px 4px;
     font-size: 12px;
 }
 
@@ -40,7 +40,7 @@
     align-items: center;
     list-style: none;
     cursor: pointer;
-    padding: 0 8px;
+    padding: 0 16px;
     font-size: 12px;
     line-height: 2;
 }

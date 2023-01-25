@@ -5,7 +5,7 @@ import {FkyConsole} from "./fky-console/FkyConsole";
 export const FkyPlayground = () => {
     return (
         <div className={'fky-playground'}>
-            <FkyName/>
+            <FkyName editable={true}/>
             <FkyConsole/>
             <FkyActions/>
         </div>

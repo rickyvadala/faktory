@@ -1,5 +1,6 @@
 .fky-name {
     display: flex;
+    position: relative;
     gap: 4px;
     align-items: center;
     color: white;
@@ -8,5 +9,27 @@
 .fky-name img {
     width: 18px;
     height: 18px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+}
+
+.fky-name input {
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+}
+
+.fky-name button {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: white;
+    right: 0;
+}
+
+.fky-name button:hover {
+    text-decoration: underline;
 }
