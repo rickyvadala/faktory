@@ -8,6 +8,7 @@
 
 .fky-home .fky-playground {
     flex-basis: 50%;
+    max-width: 50%;
 }
 
 .fky-home .fky-playground .fky-name {

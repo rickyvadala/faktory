@@ -16,3 +16,18 @@
     position: relative;
     width: fit-content;
 }
+
+.fly-console_output {
+    word-break: break-word;
+}
+.fly-console_output .command {
+    border: none;
+    background: transparent;
+    font-weight: bold;
+    color: yellow;
+    cursor: pointer;
+}
+
+.fly-console_output .command:hover {
+    text-decoration: underline;
+}

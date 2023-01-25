@@ -1,0 +1,51 @@
+.fky-command-popover {
+    visibility: hidden;
+}
+
+.fky-command-popover--visible {
+    visibility: initial;
+}
+
+.fky-command-popover_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    margin: 8px 8px 4px;
+    font-size: 12px;
+}
+
+.fky-command-popover_header img {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 2px;
+}
+
+.fky-command-popover_header span {
+    display: flex;
+    align-items: center;
+}
+
+.fky-command-popover_body {
+    /*height: calc(21px*7);*/
+}
+
+.fky-command-popover_body ul {
+    margin: 0;
+    padding: 0 0 8px 0;
+}
+
+.fky-command-popover_body ul li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.fky-command-popover_body ul li:hover {
+    background: #4F4F4F;
+}
+
