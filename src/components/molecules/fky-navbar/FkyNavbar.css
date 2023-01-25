@@ -4,3 +4,17 @@
     padding: 16px;
     height: 64px;
 }
+
+.fky-navbar_center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    filter: brightness(3);
+}
+
+.fky-navbar_center img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 2px;
+}
+

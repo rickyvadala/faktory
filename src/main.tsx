@@ -7,6 +7,7 @@ import {FkyHome} from "./pages/home/FkyHome";
 import {FkyEditor} from "./pages/editor/FkyEditor";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
+import {FkyPrompts} from "./pages/prompts/FkyPrompts";
 
 const router = createBrowserRouter([
     {
@@ -18,13 +19,21 @@ const router = createBrowserRouter([
                 element: <FkyHome/>,
             },
             {
+                path: 'prompts',
+                element: <FkyPrompts/>,
+            },
+            {
+                path: 'connections',
+                element: <FkyEditor/>,
+            },
+            {
                 path: 'editor',
                 element: <FkyEditor/>,
             },
             {
                 path: 'editor/:id',
                 element: <FkyEditor/>,
-            }
+            },
         ],
     },
 ]);

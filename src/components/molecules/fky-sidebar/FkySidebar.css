@@ -1,0 +1,35 @@
+.fky-sidebar {
+    padding: 32px;
+    flex-basis: 320px;
+}
+
+.fky-sidebar_item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.fky-sidebar_item img {
+    width: 24px;
+    height: 24px;
+}
+
+.fky-sidebar_item--active img {
+    filter: brightness(3);
+}
+
+.fky-sidebar_item button {
+    font-size: 16px;
+    color: #5D6166;
+    cursor: pointer;
+    background: transparent;
+    font-weight: bold;
+    border: none;
+    line-height: 3;
+}
+
+.fky-sidebar_item--active button {
+    color: #F8F8F8;
+}
+

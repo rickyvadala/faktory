@@ -1,5 +1,5 @@
 import './FkyName.css'
-import paper from '../../../assets/paper.svg'
+import papyrus from '../../../assets/papyrus.svg'
 import {useState} from "react";
 
 type FkyNameType = {
@@ -12,7 +12,7 @@ export const FkyName = ({editable = false}: FkyNameType) => {
 
     return (
         <div className={`fky-name`}>
-            <img src={paper} alt=""/>
+            <img src={papyrus} alt=""/>
             {!editable
                 ? <span>{name}</span>
                 : <input type="text" value={name}

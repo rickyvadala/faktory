@@ -1,38 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../store";
 import {IPrompt} from "../../model/IPrompt";
+import {allPromptsMock} from "../../utils/mocks";
 
 let singletonId = 3
 const idGenerator = () => ++singletonId
 
 const initialState = {
+    currentUser: {id: 1},
     currentPrompt: {} as IPrompt,
-    allPrompts: [
-        {
-            id: 1,
-            title: "Do this",
-            text: "Commands to do this",
-            description: "Commands to do this",
-            downloads: 50,
-            date: new Date()
-        },
-        {
-            id: 2,
-            title: "Do that",
-            text: "Commands to do that",
-            description: "Commands to do that",
-            downloads: 35,
-            date: new Date()
-        },
-        {
-            id: 3,
-            title: "Do whatever",
-            text: "Commands to do whatever",
-            description: "Commands to do whatever",
-            downloads: 23,
-            date: new Date()
-        }
-    ] as Array<IPrompt>
+    allPrompts: allPromptsMock as Array<IPrompt>
 }
 
 
@@ -62,3 +39,6 @@ export const promptsSlice = createSlice({
 export const {createPrompt, setCurrentPrompt, editCurrentPrompt} = promptsSlice.actions
 export const allPromptsSelector = (state: RootState) => state.prompts.allPrompts
 export const currentPromptSelector = (state: RootState) => state.prompts.currentPrompt
+export const myPromptsSelector = (state: RootState) => state.prompts.allPrompts.filter((p: IPrompt) => {
+    return p.owner === state.prompts.currentUser.id
+})

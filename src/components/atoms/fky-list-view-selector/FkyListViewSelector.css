@@ -1,0 +1,24 @@
+.fky-list-view-selector {
+    display: flex;
+    justify-content: space-between;
+    max-width: 825px;
+}
+
+.fky-list-view-selector h1 {
+    color: #00E0FF;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+}
+
+.fky-list-view-selector_options {
+    display: flex;
+    gap: 8px;
+}
+
+.fky-list-view-selector_options button {
+    background: transparent;
+    border: none;
+    color: #00E0FF;
+    cursor: pointer;
+}
