@@ -5,6 +5,16 @@
     background: #1E1E1E;
 }
 
+.fky-main-layout_content {
+    display: flex;
+    min-height: calc(100vh - 64px);
+}
+
+.fky-main-layout_sidebar {
+    padding: 32px;
+    flex-basis: 320px;
+}
+
 .fky-main-layout_outlet {
     display: flex;
     padding: 16px;

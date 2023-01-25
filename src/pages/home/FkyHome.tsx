@@ -1,12 +1,15 @@
-import {FkyPlayground} from "../../features/fky-playground/FkyPlayground";
-import {FkyOutput} from "../../features/fky-output/FkyOutput";
 import './FkyHome.css'
+import {useAppSelector} from "../../store/hooks";
+import {allPromptsSelector} from "../../store/slices/prompts";
+import {FkyPromptList} from "../../components/organisms/fky-prompt-list/FkyPromptList";
 
 export const FkyHome = () => {
-  return (
-      <div className={'fky-home'}>
-        <FkyPlayground/>
-        <FkyOutput/>
-      </div>
-  )
+    const prompts = useAppSelector(allPromptsSelector);
+
+    return (
+        <div className={'fky-home'}>
+            <h1>Community Prompts</h1>
+            <FkyPromptList prompts={prompts}/>
+        </div>
+    )
 }

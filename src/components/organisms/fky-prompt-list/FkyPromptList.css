@@ -1,0 +1,17 @@
+.fky-prompt-list {
+    margin: 0;
+    padding: 0;
+    max-width: 825px;
+}
+
+.fky-prompt-list_item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.fky-prompt-list_item h3 {
+    margin-top: 0;
+}

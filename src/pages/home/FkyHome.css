@@ -1,22 +1,7 @@
 .fky-home {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: space-between;
-    gap: 32px;
-    padding-left: 32px;
+    flex: 1 1;
 }
 
-.fky-home .fky-playground {
-    flex-basis: 50%;
-    max-width: 50%;
-}
-
-.fky-home .fky-playground .fky-name {
-    padding: 30px 0;
-}
-
-.fky-home .fky-output {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 50%;
+.fky-home h1 {
+    flex: 1 1;
 }

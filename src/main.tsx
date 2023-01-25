@@ -4,6 +4,9 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import './index.css'
 import {FkyMainLayout} from "./layouts/fky-main-layout/FkyMainLayout";
 import {FkyHome} from "./pages/home/FkyHome";
+import {FkyEditor} from "./pages/editor/FkyEditor";
+import {Provider} from "react-redux";
+import {store} from "./store/store";
 
 const router = createBrowserRouter([
     {
@@ -14,10 +17,14 @@ const router = createBrowserRouter([
                 index: true,
                 element: <FkyHome/>,
             },
-            // {
-            //     path: 'play',
-            //     element: <Play/>,
-            // }
+            {
+                path: 'editor',
+                element: <FkyEditor/>,
+            },
+            {
+                path: 'editor/:id',
+                element: <FkyEditor/>,
+            }
         ],
     },
 ]);
@@ -25,6 +32,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <RouterProvider router={router}/>
+        <Provider store={store}>
+            <RouterProvider router={router}/>
+        </Provider>
     </React.StrictMode>,
 )
