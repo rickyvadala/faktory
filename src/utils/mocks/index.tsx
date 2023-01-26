@@ -10,7 +10,11 @@ export const promptsMock = [
         text: "Commands to do this",
         description: "Commands to do this",
         downloads: 50,
-        date: serializedDate()
+        date: serializedDate(),
+        adjustments: {
+            whisper: '--param 25',
+            gpt: '--infoUntil 2005'
+        }
     },
     {
         id: 2,

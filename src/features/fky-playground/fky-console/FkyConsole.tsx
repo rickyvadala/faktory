@@ -8,6 +8,7 @@ import {useAppDispatch, useAppSelector} from "../../../store/hooks";
 import {editPrompt, onCommandSelected, singlePromptSelector} from "../../../store/slices/prompts";
 import {AIEnum} from "../../../utils/enums/AIEnum";
 import {useParams} from "react-router-dom";
+import {FkyCommandButton} from "../../../components/atoms/fky-command-button/FkyCommandButton";
 
 const PLACEHOLDER = 'Example: Create a bot that takes my twitter replies and turn them into images) then post them on twitter again.'
 export const FkyConsole = () => {
@@ -18,16 +19,13 @@ export const FkyConsole = () => {
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const [input, setInput] = useState<string>('')
     const [fakeInputFocused, setFakeInputFocused] = useState<boolean>(true)
-    const [placeholder] = useState<string>(PLACEHOLDER)
 
     const [output, setOutput] = useState<string>('')
     const [popoverVisible, setPopoverVisible] = useState<boolean>(false)
 
     const onInputChange = (value: string) => {
         setPopoverVisible(value[value.length - 1] === '|')
-        setInput(
-            value.replace('  ', ' ')
-        )
+        setInput(value.replace('  ', ' '))
     }
 
     const onPopoverOptionSelected = (command: string) => {
@@ -35,8 +33,11 @@ export const FkyConsole = () => {
         setPopoverVisible(false)
     }
 
-    const commandButton = (command: string) => renderToString(<p className="command" data-command={command}/>)
-    const onCommandClicked = (command: string) => dispatch(onCommandSelected(command))
+    const commandButton = (command: string) => renderToString(<FkyCommandButton command={command}/>)
+    const onCommandClicked = (command: string) => {
+        dispatch(editPrompt({text: input}))
+        dispatch(onCommandSelected(command))
+    }
 
     const realFocus = () => inputRef.current && inputRef.current.focus();
     const onInputFocused = () => {
@@ -50,6 +51,9 @@ export const FkyConsole = () => {
         Object.keys(AIEnum).forEach((key: string) => {
             parsed = parsed.replaceAll(`${key}`, `#${AIEnum[key as keyof typeof AIEnum]}#`)
         });
+        // Object.keys(CommandEnum).forEach((key: string) => {
+        //     parsed = parsed.replaceAll(`${key}`, `#${CommandEnum[key as keyof typeof CommandEnum]}#`)
+        // });
         (parsed.match(/(#(.*?)#)/g) || []).forEach(command => {
             parsed = parsed.replace(command, commandButton(command.replaceAll('#', '')))
         })
@@ -73,26 +77,31 @@ export const FkyConsole = () => {
     }, [prompt.text])
 
     return (
-        <div className={'fky-console'}
-             onClick={onInputFocused}>
+        <div className={'fky-console'} onClick={onInputFocused}>
             <textarea className={'fky-console_input'}
                       ref={inputRef}
-                      placeholder={placeholder}
                       autoFocus
                       value={input}
                       onChange={(e) => onInputChange(e.target.value)}/>
             <span className={'fly-console_output-container'}>
-                <p className={`fly-console_output ${fakeInputFocused ? 'fly-console_output--focused' : ''}`}>
-                    {parse(output, {
-                        replace: (domNode: any) => {
-                            if (domNode.attribs?.class === 'command') {
-                                const c: string = domNode.attribs['data-command']
-                                return (
-                                    <button className={'command'} onClick={() => onCommandClicked(c)}>{c}</button>
-                                );
+                <p className={`fly-console_output ${!input ? 'fly-console_output--empty' : ''} ${fakeInputFocused ? 'fly-console_output--focused' : ''}`}>
+                    {input
+                        ? parse(output, {
+                            replace: (domNode: any) => {
+                                if (domNode.attribs?.class === 'command') {
+                                    const command: string = domNode.attribs['data-command']
+                                    const color: string = domNode.attribs['data-color']
+                                    return (
+                                        <button style={{color}} className={'command'}
+                                                onClick={() => onCommandClicked(command)}>
+                                            {command}
+                                        </button>
+                                    );
+                                }
                             }
-                        }
-                    })}
+                        })
+                        : <span className={'fly-console_placeholder'}>{PLACEHOLDER}</span>
+                    }
                 </p>
                 <FkyCommandPopover visible={popoverVisible} onCommand={onPopoverOptionSelected}/>
             </span>

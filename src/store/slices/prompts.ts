@@ -61,5 +61,6 @@ export const myPromptsSelector = (state: RootState) => state.prompts.prompts.fil
 export const singlePromptSelector = (id: number) => (state: RootState) => {
     return state.prompts.prompts.find((p: IPrompt) => p.id === id)
 }
+export const editorPromptSelector = (state: RootState) => state.prompts.editorPrompt
 export const commandSelectedSelector = (state: RootState) => state.prompts.commandSelected
 

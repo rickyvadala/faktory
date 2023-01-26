@@ -2,7 +2,7 @@ import './FkyTitle.css'
 import papyrus from '../../../assets/papyrus.svg'
 import {useEffect, useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../store/hooks";
-import {editPrompt, singlePromptSelector} from "../../../store/slices/prompts";
+import {editorPromptSelector, editPrompt, singlePromptSelector} from "../../../store/slices/prompts";
 import {useParams} from "react-router-dom";
 
 type FkyTitleType = {
@@ -12,6 +12,8 @@ export const FkyTitle = ({editable = false}: FkyTitleType) => {
     const dispatch = useAppDispatch()
     const {id} = useParams()
     const prompt = useAppSelector(singlePromptSelector(Number(id)));
+    /** TODO use editorPromptSelector or display none to KEEP alive **/
+    // const prompt = useAppSelector(editorPromptSelector);
 
     const [name, setName] = useState<string>()
 

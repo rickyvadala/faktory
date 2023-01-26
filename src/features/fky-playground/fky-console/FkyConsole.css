@@ -80,3 +80,13 @@
 .fly-console_output::first-letter {
     text-transform: capitalize
 }
+
+.fly-console_placeholder {
+    color: gray;
+}
+
+.fly-console_output--empty.fly-console_output--focused:after {
+    position: absolute;
+    top: 3px;
+    left: 10px;
+}
