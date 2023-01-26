@@ -1,21 +1,31 @@
 import './FkyOutput.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FkyFlow} from "./fky-flow/FkyFlow";
 import {FkyPreview} from "./fky-preview/FkyPreview";
 import {FkyAdjust} from "./fky-adjust/FkyAdjust";
+import {useAppSelector} from "../../store/hooks";
+import {commandSelectedSelector} from "../../store/slices/prompts";
 
 type FkyOutputOptionType = 'flow' | 'preview' | 'adjust';
 
 export const FkyOutput = () => {
     const [option, setOption] = useState<FkyOutputOptionType>('flow')
+    const commandSelected = useAppSelector(commandSelectedSelector)
+
+    useEffect(() => {
+        commandSelected ? setOption('adjust') : setOption('flow')
+    }, [commandSelected])
+
     return (
         <div className={'fky-output'}>
             <div className={'fky-output_selector'}>
                 <div className={'fky-output_buttons'}>
-                    <button className={`${option === 'adjust' ? 'active' : ''}`}
-                            onClick={() => setOption("adjust")}>
+                    {commandSelected &&
+                      <button className={`${option === 'adjust' ? 'active' : ''}`}
+                              onClick={() => setOption("adjust")}>
                         Adjust
-                    </button>
+                      </button>
+                    }
                     <button className={`${option === 'flow' ? 'active' : ''}`}
                             onClick={() => setOption("flow")}>
                         Flow

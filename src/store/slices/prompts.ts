@@ -1,15 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../store";
 import {IPrompt} from "../../model/IPrompt";
-import {allPromptsMock} from "../../utils/mocks";
-
-let singletonId = 3
-const idGenerator = () => ++singletonId
+import {idGenerator, promptsMock} from "../../utils/mocks";
+import {serializedDate} from "../../utils/tools";
 
 const initialState = {
     currentUser: {id: 1},
-    currentPrompt: {} as IPrompt,
-    allPrompts: allPromptsMock as Array<IPrompt>
+    editorPrompt: {} as IPrompt,
+    prompts: promptsMock as Array<IPrompt>,
+    commandSelected: ''
 }
 
 
@@ -17,28 +16,50 @@ export const promptsSlice = createSlice({
     name: 'prompts',
     initialState,
     reducers: {
-        createPrompt: (state, {payload}) => {
-            state.allPrompts.push({
+        createPrompt: (state) => {
+            state.prompts.push({
                 id: idGenerator(),
-                ...payload,
+                downloads: 0,
+                owner: state.currentUser.id,
+                description: '',
+                title: '',
+                text: ''
             })
         },
-        setCurrentPrompt: (state, {payload}) => {
-            state.currentPrompt = state.allPrompts.find(prompt => prompt.id === payload.id) || {} as IPrompt
+        setEditorPrompt: (state, {payload}) => {
+            const prompt = state.prompts.find(prompt => prompt.id === payload.id) || {} as IPrompt
+            state.editorPrompt = {...prompt}
         },
-        editCurrentPrompt: (state, {payload}) => {
-            const index = state.allPrompts.findIndex(prompt => prompt.id === state.currentPrompt.id)
-            state.allPrompts[index] = {
-                ...state.allPrompts[index],
+        editPrompt: (state, {payload}) => {
+            state.editorPrompt = {
+                ...state.editorPrompt,
                 ...payload
             }
-        }
+        },
+        savePrompt: (state) => {
+            const index = state.prompts.findIndex(prompt => prompt.id === state.editorPrompt.id)
+            const edited = {
+                ...state.prompts[index],
+                ...state.editorPrompt,
+                date: serializedDate()
+            }
+            state.prompts[index] = edited
+            setEditorPrompt(edited)
+            console.log(state.prompts[index])
+        },
+        onCommandSelected: (state, {payload}) => {
+            state.commandSelected = payload
+        },
     }
 })
 
-export const {createPrompt, setCurrentPrompt, editCurrentPrompt} = promptsSlice.actions
-export const allPromptsSelector = (state: RootState) => state.prompts.allPrompts
-export const currentPromptSelector = (state: RootState) => state.prompts.currentPrompt
-export const myPromptsSelector = (state: RootState) => state.prompts.allPrompts.filter((p: IPrompt) => {
+export const {createPrompt, editPrompt, savePrompt, setEditorPrompt, onCommandSelected} = promptsSlice.actions
+export const allPromptsSelector = (state: RootState) => state.prompts.prompts
+export const myPromptsSelector = (state: RootState) => state.prompts.prompts.filter((p: IPrompt) => {
     return p.owner === state.prompts.currentUser.id
 })
+export const singlePromptSelector = (id: number) => (state: RootState) => {
+    return state.prompts.prompts.find((p: IPrompt) => p.id === id)
+}
+export const commandSelectedSelector = (state: RootState) => state.prompts.commandSelected
+

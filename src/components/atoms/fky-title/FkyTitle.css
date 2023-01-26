@@ -1,4 +1,4 @@
-.fky-name {
+.fky-title {
     display: flex;
     position: relative;
     gap: 4px;
@@ -6,14 +6,14 @@
     color: white;
 }
 
-.fky-name img {
+.fky-title img {
     width: 24px;
     height: 24px;
     margin-bottom: 2px;
     filter: brightness(3);
 }
 
-.fky-name input {
+.fky-title input {
     font-size: 16px;
     background: transparent;
     border: none;
@@ -21,7 +21,11 @@
     width: 100%;
 }
 
-.fky-name button {
+.fky-title input::placeholder {
+    color: white;
+}
+
+.fky-title button {
     display: none;
     cursor: pointer;
     position: absolute;
@@ -31,6 +35,6 @@
     right: 0;
 }
 
-.fky-name button:hover {
+.fky-title button:hover {
     text-decoration: underline;
 }

@@ -11,15 +11,37 @@
 .fky-prompt-list_item {
     cursor: pointer;
     display: flex;
+    gap: 20%;
     align-items: center;
     justify-content: space-between;
     list-style: none;
 }
 
+.fky-prompt-list_item:hover h3 {
+    color: #00E0FF;
+}
+
+.fky-prompt-list_item > div {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .fky-prompt-list_item h3 {
     margin: 0;
+    font-size: 16px;
 }
 
 .fky-prompt-list_item p {
-    margin: 8px 0;
+    margin: 0;
+    font-size: 14px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fky-prompt-list_item p:last-child {
+    color: gray;
 }

@@ -1,5 +1,16 @@
 .fky-logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.fky-logo_img {
     width: 32px;
     height: 32px;
-    cursor: pointer;
+}
+
+.fky-logo_chevron {
+    margin-top: 4px;
+    width: 10px;
+    height: 10px;
 }

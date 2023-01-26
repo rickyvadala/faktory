@@ -23,11 +23,11 @@ export const FkySidebar = () => {
             {hasSidebar() &&
               <div className={'fky-sidebar'}>
                   {FkyMenu.map(m => (
-                      <div className={`fky-sidebar_item ${location.pathname === m.path ? 'fky-sidebar_item--active' : ''}`}>
-                          <img src={m.img} alt=""/>
-                          <button onClick={() => navigate(m.path)}>
-                              {m.name}
-                          </button>
+                      <div key={m.name}
+                           onClick={() => navigate(m.path)}
+                           className={`fky-sidebar_item ${location.pathname === m.path ? 'fky-sidebar_item--active' : ''}`}>
+                          <img src={m.img} alt={m.name}/>
+                          <button>{m.name}</button>
                       </div>
                   ))}
               </div>

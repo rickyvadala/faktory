@@ -39,6 +39,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .fky-actions_right button:hover {

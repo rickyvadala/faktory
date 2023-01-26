@@ -23,6 +23,8 @@
 
 .fly-console_output {
     word-break: break-all;
+    text-indent: 12px;
+    margin: 0;
 }
 
 .fly-console_output .command {
@@ -36,7 +38,7 @@
 
 .fly-console_output, .fly-console_output button {
     font-size: 14px;
-    line-height: 24px;
+    line-height: 24px ;
 }
 
 .fly-console_output .command:hover {
@@ -44,14 +46,20 @@
 }
 
 .fly-console_output:before {
-    content: '$ ';
+    content: '> ';
+    position: absolute;
+    left: -12px;
 }
 
 .fly-console_output--focused:after {
-    content: '|';
-    font-weight: 100;
-    font-size: 16px;
-    color: white;
+    content: '';
+    display: inline-flex;
+    margin-left: 2px;
+    padding-bottom: 4px;
+    padding-top: 1px;
+    width: 1px;
+    height: 12px;
+    background: white;
     -webkit-animation: 1s blink step-end infinite;
     -moz-animation: 1s blink step-end infinite;
     -ms-animation: 1s blink step-end infinite;
@@ -62,9 +70,13 @@
 @keyframes blink {
     from,
     to {
-        color: transparent;
+        background: transparent;
     }
     50% {
-        color: white;
+        background: white;
     }
+}
+
+.fly-console_output::first-letter {
+    text-transform: capitalize
 }

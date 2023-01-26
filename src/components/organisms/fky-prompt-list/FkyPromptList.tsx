@@ -11,20 +11,20 @@ export const FkyPromptList = ({prompts}: FkyPromptListType) => {
     return (
         <ul className={'fky-prompt-list'}>
             {prompts.map((prompt: IPrompt) => (
-                <>
+                <div key={prompt.id}>
                     <hr/>
-                    <li key={prompt.id}
+                    <li
                         className={'fky-prompt-list_item'}
                         onClick={() => navigate(`/editor/${prompt.id}`)}
                         >
                         <div>
                             <h3>{prompt.title}</h3>
                             <p>{prompt.description}</p>
-                            <span>{prompt.downloads} Downloads | {prompt.date.toLocaleDateString()}</span>
+                            <p>{prompt.downloads} Downloads  |  {prompt.date?.split(' ')[1]}</p>
                         </div>
                         <FkyAvatar/>
                     </li>
-                </>
+                </div>
             ))}
         </ul>
     )

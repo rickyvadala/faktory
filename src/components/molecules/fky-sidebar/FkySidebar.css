@@ -8,6 +8,7 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    padding: 12px;
 }
 
 .fky-sidebar_item img {
@@ -26,10 +27,24 @@
     background: transparent;
     font-weight: bold;
     border: none;
-    line-height: 3;
 }
 
 .fky-sidebar_item--active button {
     color: #F8F8F8;
+}
+
+@media (max-width: 991px) {
+    .fky-sidebar {
+        padding: 32px 16px;
+        flex-basis: 64px;
+    }
+
+    .fky-sidebar_item {
+        gap: 0;
+    }
+
+    .fky-sidebar_item button {
+        display: none;
+    }
 }
 
