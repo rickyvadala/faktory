@@ -14,7 +14,18 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@font-face {
+  font-family: SF-Pro-Display-Regular;
+  src: url(./assets/fonts/SF-Pro-Display-Regular.otf);
+}
+
+@font-face {
+  font-family: SF-Pro-Display-Semibold;
+  src: url(./assets/fonts/SF-Pro-Display-Semibold.otf);
+}
+
 * {
+  font-family: SF-Pro-Display-Regular, sans-serif;
   box-sizing: border-box;
 }
 

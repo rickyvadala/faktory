@@ -6,11 +6,12 @@ import {useEffect, useRef, useState} from "react";
 import {FkyCommandPopover} from "./fky-command-popover/FkyCommandPopover";
 import {useAppDispatch, useAppSelector} from "../../../store/hooks";
 import {editPrompt, onCommandSelected, singlePromptSelector} from "../../../store/slices/prompts";
-import {AIEnum} from "../../../utils/enums/AIEnum";
+import {PlatformEnum} from "../../../utils/enums/PlatformEnum";
 import {useParams} from "react-router-dom";
 import {FkyCommandButton} from "../../../components/atoms/fky-command-button/FkyCommandButton";
 import {CommandEnum} from "../../../utils/enums/CommandEnum";
-import {commandsArray} from "../../../utils/tools";
+import {SPECIAL_WORDS_ARRAY} from "../../../utils/constants";
+import {ConnectionEnum} from "../../../utils/enums/ConnectionEnum";
 
 const PLACEHOLDER = 'Example: Create a bot that takes my twitter replies and turn them into images) then post them on twitter again.'
 export const FkyConsole = () => {
@@ -36,9 +37,11 @@ export const FkyConsole = () => {
     }
 
     const commandButton = (command: string) => renderToString(<FkyCommandButton command={command}/>)
-    const onCommandClicked = (command: string) => {
-        dispatch(editPrompt({text: input}))
-        dispatch(onCommandSelected(command))
+    const onCommandClicked = (command: string, type: string) => {
+        if (type === 'platform') {
+            dispatch(editPrompt({text: input}))
+            dispatch(onCommandSelected(command))
+        }
     }
 
     const realFocus = () => inputRef.current && inputRef.current.focus();
@@ -50,9 +53,11 @@ export const FkyConsole = () => {
     useEffect(() => {
         dispatch(editPrompt({text: input}))
         let parsed: string = input.toLowerCase();
-        commandsArray.forEach((key: string) => {
+        SPECIAL_WORDS_ARRAY.forEach((key: string) => {
             parsed = parsed.replaceAll(`|${key}`, commandButton(
-                AIEnum[key as keyof typeof AIEnum] || CommandEnum[key as keyof typeof CommandEnum]
+                PlatformEnum[key as keyof typeof PlatformEnum]
+                || CommandEnum[key as keyof typeof CommandEnum]
+                || ConnectionEnum[key as keyof typeof ConnectionEnum]
             ))
         });
         setOutput(parsed)
@@ -88,9 +93,11 @@ export const FkyConsole = () => {
                                 if (domNode.attribs?.class === 'command') {
                                     const command: string = domNode.attribs['data-command']
                                     const color: string = domNode.attribs['data-color']
+                                    const type: string = domNode.attribs['data-special-type']
                                     return (
-                                        <button style={{color}} className={'command'}
-                                                onClick={() => onCommandClicked(command)}>
+                                        <button style={{color}}
+                                                className={`command command--${type}`}
+                                                onClick={() => onCommandClicked(command, type)}>
                                             {command}
                                         </button>
                                     );

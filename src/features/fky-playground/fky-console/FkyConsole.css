@@ -31,9 +31,8 @@
     border: none;
     background: transparent;
     font-weight: bold;
-    color: yellow;
-    cursor: pointer;
     padding: 0;
+    cursor: text;
 }
 
 .fly-console_output, .fly-console_output button {
@@ -41,7 +40,10 @@
     line-height: 24px ;
 }
 
-.fly-console_output .command:hover {
+.fly-console_output .command--platform {
+    cursor: pointer;
+}
+.fly-console_output .command--platform:hover {
     text-decoration: underline;
 }
 

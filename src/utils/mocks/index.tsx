@@ -7,7 +7,7 @@ export const promptsMock = [
         id: 1,
         owner: 1,
         title: "Do this",
-        text: "Commands to do this",
+        text: "|Create something great with |gpt + |transcribe it with |whisper + |voiceover it with |play.ht + |publish it to |youtube",
         description: "Commands to do this",
         downloads: 50,
         date: serializedDate(),

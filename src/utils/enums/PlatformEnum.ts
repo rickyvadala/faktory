@@ -1,4 +1,4 @@
-export enum AIEnum {
+export enum PlatformEnum {
     'whisper' = 'Whisper',
     'obs' = 'OBS',
     'play.ht' = 'Play.ht',

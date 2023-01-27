@@ -1,14 +1,21 @@
 import React, {useState} from 'react';
 import {CommandEnum} from "../../../utils/enums/CommandEnum";
+import {PlatformEnum} from "../../../utils/enums/PlatformEnum";
 
-const colorDef = (command: any) => {
-    return Object.values(CommandEnum).includes(command) ? '#FFD600' : '#00E0FF'
+const isPlatform = (command: any) => Object.values(PlatformEnum).includes(command)
+const colorDefinition = (command: any) => {
+    return isPlatform(command)
+        ? '#00E0FF'
+        : Object.values(CommandEnum).includes(command)
+            ? '#FFD600'
+            : '#FF1BDA'
 }
 
 export const FkyCommandButton = ({command}: any) => {
-    const [color] = useState(colorDef(command));
-    return (
-        <button data-command={command} data-color={color} className="command"/>
-    );
+    const [color] = useState(colorDefinition(command));
+    return <button data-command={command}
+                   data-color={color}
+                   data-special-type={isPlatform(command) ? "platform" : 'other'}
+                   className={`command`}/>
 }
 

@@ -1,3 +1,4 @@
+
 export enum CommandEnum {
     'create' = 'Create',
     'make' = 'Make',
@@ -11,4 +12,8 @@ export enum CommandEnum {
     'or' = 'Or',
     'then' = 'Then',
     'translate' = 'Translate',
+    'transcribe' = 'Transcribe',
+    'record' = 'Record',
+    'voiceover' = 'Voice over',
+    'publish' = 'Publish',
 }

@@ -29,6 +29,7 @@
 }
 
 .fky-prompt-list_item h3 {
+    font-weight: bold;
     margin: 0;
     font-size: 16px;
 }
