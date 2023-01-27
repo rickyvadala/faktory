@@ -2,16 +2,33 @@ import './FkyCommandPopover.css'
 import commandImage from '../../../../assets/command.svg'
 import {FkyPopover, FkyPopoverType} from "../../../../components/atoms/fky-popover/FkyPopover";
 import {CommandEnum} from "../../../../utils/enums/CommandEnum";
+import {useEffect} from "react";
 
 type FkyCommandPopoverType = FkyPopoverType & {
     onCommand: Function
 }
-export const FkyCommandPopover = ({visible, onCommand}: FkyCommandPopoverType) => {
+export const FkyCommandPopover = ({visible, setVisible, onCommand}: FkyCommandPopoverType) => {
     const commands = Object.values(CommandEnum).filter((e, i) => i < 7);
+
+    const keydownHandler = (e: any) => {
+        if(e.key.toLowerCase() === 'j' && e.ctrlKey) {
+            e.preventDefault()
+            setVisible(true)
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('keydown', keydownHandler);
+        return () => {
+            document.removeEventListener('keydown', keydownHandler);
+        }
+    }, []);
 
     return (
         <FkyPopover className={`fky-command-popover ${visible ? 'fky-command-popover--visible' : ''}`}
-                    visible={true}>
+                    visible={true}
+                    setVisible={setVisible}
+        >
             <div className={'fky-command-popover_header'}>
                 <span>COMMANDS</span>
                 <span><img src={commandImage} alt="Command"/>+J</span>

@@ -9,6 +9,8 @@ import {editPrompt, onCommandSelected, singlePromptSelector} from "../../../stor
 import {AIEnum} from "../../../utils/enums/AIEnum";
 import {useParams} from "react-router-dom";
 import {FkyCommandButton} from "../../../components/atoms/fky-command-button/FkyCommandButton";
+import {CommandEnum} from "../../../utils/enums/CommandEnum";
+import {commandsArray} from "../../../utils/tools";
 
 const PLACEHOLDER = 'Example: Create a bot that takes my twitter replies and turn them into images) then post them on twitter again.'
 export const FkyConsole = () => {
@@ -24,12 +26,12 @@ export const FkyConsole = () => {
     const [popoverVisible, setPopoverVisible] = useState<boolean>(false)
 
     const onInputChange = (value: string) => {
-        setPopoverVisible(value[value.length - 1] === '|')
+        setPopoverVisible(value[value.length - 1] === '/')
         setInput(value.replace('  ', ' '))
     }
 
     const onPopoverOptionSelected = (command: string) => {
-        setInput((prevState => `${prevState} #${command}# `))
+        setInput((prevState => `${prevState} |${command} `))
         setPopoverVisible(false)
     }
 
@@ -47,17 +49,12 @@ export const FkyConsole = () => {
 
     useEffect(() => {
         dispatch(editPrompt({text: input}))
-        let parsed: string = input.toLowerCase().replaceAll('|', '');
-        Object.keys(AIEnum).forEach((key: string) => {
-            parsed = parsed.replaceAll(`${key}`, `#${AIEnum[key as keyof typeof AIEnum]}#`)
+        let parsed: string = input.toLowerCase();
+        commandsArray.forEach((key: string) => {
+            parsed = parsed.replaceAll(`|${key}`, commandButton(
+                AIEnum[key as keyof typeof AIEnum] || CommandEnum[key as keyof typeof CommandEnum]
+            ))
         });
-        // Object.keys(CommandEnum).forEach((key: string) => {
-        //     parsed = parsed.replaceAll(`${key}`, `#${CommandEnum[key as keyof typeof CommandEnum]}#`)
-        // });
-        (parsed.match(/(#(.*?)#)/g) || []).forEach(command => {
-            parsed = parsed.replace(command, commandButton(command.replaceAll('#', '')))
-        })
-
         setOutput(parsed)
     }, [input])
 
@@ -103,7 +100,10 @@ export const FkyConsole = () => {
                         : <span className={'fly-console_placeholder'}>{PLACEHOLDER}</span>
                     }
                 </p>
-                <FkyCommandPopover visible={popoverVisible} onCommand={onPopoverOptionSelected}/>
+                <FkyCommandPopover visible={popoverVisible}
+                                   setVisible={setPopoverVisible}
+                                   onCommand={onPopoverOptionSelected}
+                />
             </span>
         </div>
     )
