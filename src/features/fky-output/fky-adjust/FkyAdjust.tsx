@@ -10,10 +10,10 @@ export const FkyAdjust = () => {
     const prompt = useAppSelector(singlePromptSelector(Number(id)));
     const commandSelected = useAppSelector(commandSelectedSelector)
 
-    const [adjust, setAdjust] = useState<string>('')
+    const [adjust, setAdjust] = useState<any>({})
     useEffect(() => {
         if (prompt.adjustments && commandSelected) {
-            setAdjust(prompt.adjustments[commandSelected.toLowerCase()] || '')
+            setAdjust(prompt.adjustments[commandSelected.toLowerCase()] || {})
         }
     }, [prompt, commandSelected])
 
@@ -28,7 +28,7 @@ export const FkyAdjust = () => {
         <textarea className={'fky-adjust_text'}
                   placeholder={'--param value'}
                   autoFocus
-                  value={adjust}
+                  value={adjust.adjust}
                   onChange={onChange}/>
         </div>
     )

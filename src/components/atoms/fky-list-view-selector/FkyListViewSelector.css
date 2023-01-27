@@ -13,12 +13,16 @@
 
 .fky-list-view-selector_options {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
 }
 
-.fky-list-view-selector_options button {
-    background: transparent;
-    border: none;
-    color: #00E0FF;
+.fky-list-view-selector_options img {
+    width: 18px;
+    height: 18px;
     cursor: pointer;
+}
+
+.fky-list-view-selector_options img:not(.active) {
+    filter: grayscale();
 }

@@ -3,14 +3,15 @@ import {RootState} from "../store";
 import {IPrompt} from "../../model/IPrompt";
 import {idGenerator, promptsMock} from "../../utils/mocks";
 import {serializedDate} from "../../utils/tools";
+import {FkyListViewSelectorType} from "../../components/atoms/fky-list-view-selector/FkyListViewSelector";
 
 const initialState = {
     currentUser: {id: 1},
     editorPrompt: {} as IPrompt,
     prompts: promptsMock as Array<IPrompt>,
-    commandSelected: ''
+    commandSelected: '',
+    viewSelected: 'list' as FkyListViewSelectorType
 }
-
 
 export const promptsSlice = createSlice({
     name: 'prompts',
@@ -23,6 +24,7 @@ export const promptsSlice = createSlice({
                 owner: state.currentUser.id,
                 description: '',
                 title: '',
+                img: 'https://media.licdn.com/dms/image/D4D03AQGL_aSdA-H8cw/profile-displayphoto-shrink_400_400/0/1664792465170?e=1680134400&v=beta&t=Z90drI8d-RYGk68Gzv3Bn2BhYUHINskNbCzWaqvFSi0',
                 text: ''
             })
         },
@@ -50,10 +52,20 @@ export const promptsSlice = createSlice({
         onCommandSelected: (state, {payload}) => {
             state.commandSelected = payload
         },
+        onViewSelected: (state, {payload}) => {
+            state.viewSelected = payload
+        },
     }
 })
 
-export const {createPrompt, editPrompt, savePrompt, setEditorPrompt, onCommandSelected} = promptsSlice.actions
+export const {
+    createPrompt,
+    editPrompt,
+    savePrompt,
+    setEditorPrompt,
+    onCommandSelected,
+    onViewSelected
+} = promptsSlice.actions
 export const allPromptsSelector = (state: RootState) => state.prompts.prompts
 export const myPromptsSelector = (state: RootState) => state.prompts.prompts.filter((p: IPrompt) => {
     return p.owner === state.prompts.currentUser.id
@@ -63,4 +75,5 @@ export const singlePromptSelector = (id: number) => (state: RootState) => {
 }
 export const editorPromptSelector = (state: RootState) => state.prompts.editorPrompt
 export const commandSelectedSelector = (state: RootState) => state.prompts.commandSelected
+export const viewSelectedSelector = (state: RootState) => state.prompts.viewSelected
 

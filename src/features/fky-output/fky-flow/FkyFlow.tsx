@@ -32,14 +32,15 @@ export const FkyFlow = () => {
         }
 
         const commands = specialWords(text.toLowerCase(), COMMANDS_ARRAY)
-        const platforms = specialWords(text.toLowerCase(), PLATFORMS_ARRAY)
-        const connections = specialWords(text.toLowerCase(), CONNECTIONS_ARRAY)
+
+        const platformsAndConnections = specialWords(text.toLowerCase(), [...PLATFORMS_ARRAY, ...CONNECTIONS_ARRAY])
         const flowIterator = []
-        for (let i = 0; i < Math.min(commands.length, platforms.length); i++) {
+
+        for (let i = 0; i < Math.min(commands.length, platformsAndConnections.length); i++) {
             const command = CommandEnum[commands[i]?.replace('|', '') as keyof typeof CommandEnum]
-            const platform = PlatformEnum[platforms[i]?.replace('|', '') as keyof typeof PlatformEnum]
-            const connection = ConnectionEnum[connections[i]?.replace('|', '') as keyof typeof ConnectionEnum]
-            flowIterator.unshift({id: i, do: command, with: platform || connection})
+            const platformAndConnection = PlatformEnum[platformsAndConnections[i]?.replace('|', '') as keyof typeof PlatformEnum] ||
+                ConnectionEnum[platformsAndConnections[i]?.replace('|', '') as keyof typeof ConnectionEnum]
+            flowIterator.unshift({id: i, do: command, with: platformAndConnection})
         }
         setFlow(flowIterator)
     }

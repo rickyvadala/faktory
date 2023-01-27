@@ -5,5 +5,6 @@ export interface IPrompt {
     description: string,
     downloads: number,
     text: string,
+    img: string,
     date?: string,
 }

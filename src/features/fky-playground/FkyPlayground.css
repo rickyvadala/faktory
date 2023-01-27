@@ -22,3 +22,19 @@
 .fky-playground_command-chevron {
     transform: rotate(90deg);
 }
+
+
+.fky-playground_command-text textarea {
+    background: transparent;
+    color: white;
+    width: 100%;
+    resize: none;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+@media (max-width: 991px) {
+    .fky-playground_command {
+        padding: 8px 0 30px;
+    }
+}

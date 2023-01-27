@@ -33,6 +33,10 @@
     font-size: 20px;
 }
 
+.fky-actions_right {
+    min-width: fit-content;
+}
+
 .fky-actions_right button {
     padding: 0 8px;
     color: white;

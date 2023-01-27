@@ -22,5 +22,12 @@
 @media (max-width: 991px) {
     .fky-editor {
         flex-direction: column;
+        justify-content: flex-start;
+    }
+    .fky-editor .fky-playground {
+        flex-basis: unset;
+    }
+    .fky-editor .fky-playground .fky-title {
+        padding: 8px 0 30px;
     }
 }

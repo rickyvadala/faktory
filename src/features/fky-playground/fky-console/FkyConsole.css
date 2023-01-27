@@ -46,6 +46,16 @@
 .fly-console_output .command--platform:hover {
     text-decoration: underline;
 }
+.fly-console_output .command--platform:after {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-bottom: 2px solid #00E0FF;
+    border-left: 2px solid #00E0FF;
+    transform: rotate(-45deg);
+    margin: 0 2px 4px 4px;
+}
 
 .fly-console_output:before {
     content: '> ';

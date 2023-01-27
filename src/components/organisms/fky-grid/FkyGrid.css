@@ -1,0 +1,73 @@
+.fky-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    max-width: 825px;
+}
+
+.fky-grid > div {
+    max-width: calc(25% - (16px*3)/4);
+    flex-basis: calc(25% - (16px*3)/4);
+}
+
+.fky-grid_item {
+    min-height: 195px;
+    border-radius: 8px;
+    background: #2D2C2C;
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.fky-grid_item:hover h3 {
+    color: #00E0FF;
+}
+
+.fky-grid_item > div {
+    max-width: -webkit-fill-available;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fky-grid_item h3 {
+    font-weight: bold;
+    margin: 16px 0 0;
+    font-size: 16px;
+}
+
+.fky-grid_item p {
+    color: gray;
+    margin: 0;
+    font-size: 14px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fky-grid_item p:nth-child(2) {
+    color: white;
+}
+
+@media (max-width: 991px) {
+    .fky-grid > div {
+        max-width: calc((100%/3) - (16px*2)/3);
+        flex-basis: calc((100%/3) - (16px*2)/3);
+    }
+}
+
+@media (max-width: 767px) {
+    .fky-grid > div {
+        max-width: calc((100%/2) - (16px)/2);
+        flex-basis: calc((100%/2) - (16px)/2);
+    }
+}
