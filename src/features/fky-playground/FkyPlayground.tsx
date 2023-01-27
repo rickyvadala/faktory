@@ -26,21 +26,25 @@ export const FkyPlayground = () => {
     return (
         <div className={'fky-playground'}>
             {!commandSelected
-                ? <>
-                    <FkyTitle editable={true}/>
-                    <FkyConsole/>
-                </>
-                : <>
-                    <div className={'fky-playground_command'}
-                         onClick={() => dispatch(onCommandSelected(''))}>
-                        <img className={'fky-playground_command-chevron'} src={chevron} alt=""/>
-                        <img className={'fky-playground_command-papyrus'} src={papyrus} alt=""/>
-                        <span>{commandSelected}</span>
-                    </div>
-                    <div className={'fky-playground_command-text'}>
-                        <textarea value={adjustText} onChange={(e) => setAdjustText(e.target.value)} />
-                    </div>
-                </>
+                ? (
+                    <>
+                        <FkyTitle editable={true}/>
+                        <FkyConsole/>
+                    </>
+                )
+                : (
+                    <>
+                        <div className={'fky-playground_command'}
+                             onClick={() => dispatch(onCommandSelected(''))}>
+                            <img className={'fky-playground_command-chevron'} src={chevron} alt=""/>
+                            <img className={'fky-playground_command-papyrus'} src={papyrus} alt=""/>
+                            <span>{commandSelected}</span>
+                        </div>
+                        <div className={'fky-playground_command-text'}>
+                            <textarea value={adjustText} onChange={(e) => setAdjustText(e.target.value)}/>
+                        </div>
+                    </>
+                )
             }
             <FkyActions/>
         </div>
