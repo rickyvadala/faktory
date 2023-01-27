@@ -1,7 +1,7 @@
 .fky-popover {
     position: absolute;
-    top: 24px;
-    right: 0;
+    top: 100%;
+    left: calc(50% - 90px);
     width: 180px;
     background: #262729;
     border-radius: 8px;
