@@ -12,7 +12,7 @@ export const promptsMock = [
         description: "Commands to do this",
         downloads: 50,
         date: serializedDate(),
-        adjustments: {
+        customizations: {
             whisper: {text: 'use the last version', adjust: '--param 25'},
             gpt: {text: 'write in spanish', adjust: '--infoUntil 2005'}
         }

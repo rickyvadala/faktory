@@ -1,8 +1,6 @@
 .fky-avatar img {
     display: flex;
     align-items: center;
-    width: 32px;
-    height: 32px;
     border-radius: 50%;
     border: #27A2F8 solid 2px;
     cursor: pointer;

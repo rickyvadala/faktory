@@ -2,26 +2,27 @@ import {FkyTitle} from "../../components/atoms/fky-title/FkyTitle";
 import {FkyActions} from "./fky-actions/FkyActions";
 import {FkyConsole} from "./fky-console/FkyConsole";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {commandSelectedSelector, onCommandSelected, singlePromptSelector} from "../../store/slices/prompts";
+import {commandSelectedSelector, editorPromptSelector, editPrompt, onCommandSelected} from "../../store/slices/prompts";
 import papyrus from '../../assets/papyrus.svg'
 import chevron from '../../assets/chevron.svg'
 import './FkyPlayground.css'
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
 
 export const FkyPlayground = () => {
     const dispatch = useAppDispatch()
-
-    const {id} = useParams()
-    const prompt = useAppSelector(singlePromptSelector(Number(id)));
+    const {customizations} = useAppSelector(editorPromptSelector);
     const commandSelected = useAppSelector(commandSelectedSelector)
 
-    const [adjustText, setAdjustText] = useState<string>('')
-    useEffect(() => {
-        if (prompt.adjustments && commandSelected) {
-            setAdjustText((prompt.adjustments[commandSelected.toLowerCase()] || {}).text || '')
-        }
-    }, [prompt, commandSelected])
+    const onChange = (e: any) => {
+        dispatch(editPrompt({
+            customizations: {
+                ...customizations,
+                [`${commandSelected.toLowerCase()}`]: {
+                    ...customizations?.[commandSelected.toLowerCase()],
+                    text: e.target.value
+                }
+            }
+        }))
+    }
 
     return (
         <div className={'fky-playground'}>
@@ -41,7 +42,8 @@ export const FkyPlayground = () => {
                             <span>{commandSelected}</span>
                         </div>
                         <div className={'fky-playground_command-text'}>
-                            <textarea value={adjustText} onChange={(e) => setAdjustText(e.target.value)}/>
+                            <textarea value={customizations?.[commandSelected.toLowerCase()]?.text || ''}
+                                      onChange={onChange}/>
                         </div>
                     </>
                 )

@@ -1,8 +1,8 @@
 import './FkyPrompts.css'
 import {useAppSelector} from "../../store/hooks";
 import {myPromptsSelector, viewSelectedSelector} from "../../store/slices/prompts";
-import {FkyPromptList} from "../../components/organisms/fky-prompt-list/FkyPromptList";
-import {FkyListViewSelector} from "../../components/atoms/fky-list-view-selector/FkyListViewSelector";
+import {FkyList} from "../../components/organisms/fky-list/FkyList";
+import {FkyViewSelector} from "../../components/atoms/fky-view-selector/FkyViewSelector";
 import {FkyGrid} from "../../components/organisms/fky-grid/FkyGrid";
 
 export const FkyPrompts = () => {
@@ -11,9 +11,9 @@ export const FkyPrompts = () => {
 
     return (
         <div className={'fky-prompts'}>
-            <FkyListViewSelector title={'Prompts'}/>
+            <FkyViewSelector title={'Prompts'}/>
             {viewSelected === 'list'
-                ? <FkyPromptList prompts={prompts}/>
+                ? <FkyList prompts={prompts}/>
                 : <FkyGrid prompts={prompts}/>
             }
         </div>

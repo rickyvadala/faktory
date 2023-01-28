@@ -7,7 +7,6 @@ import {useAppSelector} from "../../store/hooks";
 import {commandSelectedSelector} from "../../store/slices/prompts";
 
 type FkyOutputOptionType = 'flow' | 'preview' | 'adjust';
-
 export const FkyOutput = () => {
     const [option, setOption] = useState<FkyOutputOptionType>('flow')
     const commandSelected = useAppSelector(commandSelectedSelector)

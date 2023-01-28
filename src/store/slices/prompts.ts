@@ -3,14 +3,14 @@ import {RootState} from "../store";
 import {IPrompt} from "../../model/IPrompt";
 import {idGenerator, promptsMock} from "../../utils/mocks";
 import {serializedDate} from "../../utils/tools";
-import {FkyListViewSelectorType} from "../../components/atoms/fky-list-view-selector/FkyListViewSelector";
+import {FkyViewSelectorType} from "../../components/atoms/fky-view-selector/FkyViewSelector";
 
 const initialState = {
     currentUser: {id: 1},
     editorPrompt: {} as IPrompt,
     prompts: promptsMock as Array<IPrompt>,
     commandSelected: '',
-    viewSelected: 'list' as FkyListViewSelectorType
+    viewSelected: 'list' as FkyViewSelectorType
 }
 
 export const promptsSlice = createSlice({

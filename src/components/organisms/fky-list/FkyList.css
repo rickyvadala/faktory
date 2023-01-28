@@ -1,14 +1,14 @@
-.fky-prompt-list {
+.fky-list {
     margin: 0;
     padding: 0;
     max-width: 825px;
 }
 
-.fky-prompt-list hr {
+.fky-list hr {
     margin: 16px 0;
 }
 
-.fky-prompt-list_item {
+.fky-list_item {
     cursor: pointer;
     display: flex;
     gap: 20%;
@@ -17,24 +17,24 @@
     list-style: none;
 }
 
-.fky-prompt-list_item:hover h3 {
+.fky-list_item:hover h3 {
     color: #00E0FF;
 }
 
-.fky-prompt-list_item > div {
+.fky-list_item > div {
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.fky-prompt-list_item h3 {
+.fky-list_item h3 {
     font-weight: bold;
     margin: 0;
     font-size: 16px;
 }
 
-.fky-prompt-list_item p {
+.fky-list_item p {
     margin: 0;
     font-size: 14px;
     display: block;
@@ -43,6 +43,6 @@
     text-overflow: ellipsis;
 }
 
-.fky-prompt-list_item p:last-child {
+.fky-list_item p:last-child {
     color: gray;
 }

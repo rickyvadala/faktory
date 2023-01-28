@@ -16,7 +16,7 @@ export const FkyGrid = ({prompts}: FkyGridType) => {
                         className={'fky-grid_item'}
                         onClick={() => navigate(`/editor/${prompt.id}`)}
                     >
-                        <FkyAvatar src={prompt.img}/>
+                        <FkyAvatar size={48} src={prompt.img}/>
                         <div>
                             <h3>{prompt.title}</h3>
                             <p>{prompt.description}</p>
